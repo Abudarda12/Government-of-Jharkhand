@@ -12,6 +12,13 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 router.get("/", (req, res) => res.render("index"));
+router.get("/about",(req,res)=>{
+  res.render("about")
+})
+
+router.get('/contact',(req,res)=>{
+  res.render("contact")
+})
 // Register Page
 router.get("/register", (req, res) => res.render("register"));
 
@@ -29,7 +36,7 @@ router.post("/register", async (req, res) => {
     await sendEmail(
       email,
       "🎉 Welcome to Civic साथी",
-      `Hello ${name},\n\nYour account has been successfully created. You can now log in using your credentials.\nYour Username: ${username} and Password: ${password}.\n\nRegards,\nGrievance Portal Team`
+      `Hello ${name},\n\nYour account has been successfully created. You can now log in using your credentials.\nYour Username: ${username} and Password: ${password}.\nAccess your Dashboard: localhost:3000/dashboard\nRegards,\nGrievance Portal Team`
     );
 
     req.flash("success", "You are now registered. A confirmation email has been sent.");

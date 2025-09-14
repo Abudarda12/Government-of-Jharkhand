@@ -14,212 +14,378 @@
         </div>
         <% } %>
           </div>
-          <!DOCTYPE html>
-          <html lang="en">
 
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Civic Saathi</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <style>
-              /* Slider */
-              /* main {
-      width: 100%;
-      height: 80vh;
-      margin: auto;
-      margin-top: 20px;
-      box-shadow: 0 0 5px black;
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-    .slide_image {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      transition: 1s;
-      object-fit: cover;
-    } */
 
-              /* Card Section */
+          <!-- Hero Section with Slider -->
+          <style>
+            /* Hero Section */
+            .slider-container {
+              position: relative;
+              overflow: hidden;
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              max-width: 100%;
+              margin: auto;
+            }
+
+            .slide {
+              display: none;
+              position: relative;
+            }
+
+            .slide.active {
+              display: block;
+            }
+
+            .slide img {
+              object-fit: contain;
+              height: 80vh;
+              width: 100%;
+            }
+
+            .caption {
+              position: absolute;
+              bottom: 20px;
+              left: 20px;
+              color: #fff;
+              background: rgba(0, 0, 0, 0.5);
+              padding: 8px 12px;
+              border-radius: 5px;
+            }
+
+            .prev,
+            .next {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              background: rgba(0, 0, 0, 0.5);
+              color: #fff;
+              border: none;
+              font-size: 24px;
+              padding: 8px 12px;
+              cursor: pointer;
+              border-radius: 5px;
+            }
+
+            .next {
+              right: 10px;
+            }
+
+            .prev {
+              left: 10px;
+            }
+
+            .prev:hover,
+            .next:hover {
+              background: rgba(0, 0, 0, 0.8);
+            }
+
+            .dots-container .dot {
+              height: 15px;
+              width: 15px;
+              margin: 0 4px;
+              background: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+              cursor: pointer;
+            }
+
+            .dots-container .dot.active {
+              background: #717171;
+            }
+
+            .card-action {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: transform 0.3s;
+            }
+
+            .card-action:hover {
+              transform: translateY(-5px);
+            }
+
+            @media(max-width:768px) {
               .main-container {
-                width: 100%;
-                min-height: 90vh;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-                padding: 20px;
-              }
-
-              .card-container {
-                flex: 1 1 450px;
-                max-width: 600px;
-                display: flex;
                 flex-direction: column;
                 align-items: center;
+              }
+
+              .card-action {
                 justify-content: center;
-                gap: 20px;
+                text-align: center;
+              }
+            }
+
+            .main-container {
+              width: 100%;
+              min-height: 90vh;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+              gap: 30px;
+              padding: 20px;
+            }
+
+            .card-container {
+              flex: 1 1 450px;
+              max-width: 600px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 20px;
+              text-align: center;
+            }
+
+            .card-box {
+              height: 150px;
+              width: 80%;
+              background-color: bisque;
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              gap: 15px;
+              padding: 0 20px;
+              border-radius: 8px;
+              box-shadow: 2px 2px 10px gray;
+              transition: all 0.3s ease-in-out;
+              cursor: pointer;
+            }
+
+            .card-box:hover {
+              box-shadow: 5px 5px 20px gray;
+              transform: translateY(-5px);
+            }
+
+            .card-box a {
+              text-decoration: none;
+              color: black;
+            }
+
+            /* Different card colors */
+            #card-1 {
+              background: linear-gradient(to bottom, #FF6A00, #FF8C42)
+            }
+
+            #card-2 {
+              background: linear-gradient(to bottom, rgba(54, 209, 220, 1), rgba(91, 134, 229, 0.06));
+
+            }
+
+            #card-3 {
+              background: linear-gradient(to bottom, #38EF7D, #11998E);
+            }
+
+
+            #civic {
+              font-size: 2rem;
+              font-weight: 700;
+            }
+
+            /* main-section-gov-card  */
+            .gov-container {
+              width: 100%;
+              min-height: 50vh;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+              gap: 80px;
+              padding: 20px;
+            }
+
+            .card-parent {
+              flex: 1 1 250px;
+              max-width: 300px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              text-align: center;
+              padding: 10px;
+              border-radius: 8px;
+              box-shadow: 2px 2px 10px gray;
+              transition: all 0.3s ease-in-out;
+              cursor: pointer;
+
+            }
+
+            .card-parent:hover {
+              box-shadow: 5px 5px 20px gray;
+              transform: translateY(-5px);
+            }
+
+
+            @media (max-width: 768px) {
+              main {
+                height: 40vh;
                 text-align: center;
               }
 
               .card-box {
-                height: 150px;
-                width: 80%;
-                background-color: bisque;
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                gap: 15px;
-                padding: 0 20px;
-                border-radius: 8px;
-                box-shadow: 2px 2px 10px gray;
-                transition: all 0.3s ease-in-out;
+                height: auto;
+                padding: 15px;
               }
 
-              .card-box:hover {
-                box-shadow: 5px 5px 20px gray;
-                transform: translateY(-5px);
+              .card-box img {
+                height: 70px;
+                width: 70px;
               }
 
-              .card-box a {
-                text-decoration: none;
-                color: white;
+              .gov-container {
+                gap: 30px;
+
+              }
+              .slide img {
+                height: auto;
+              }
+            }
+
+            @media (max-width: 576px) {
+              main {
+                height: auto;
               }
 
-              /* Different card colors */
-              #card-1 {
-                background: linear-gradient(to bottom, #FF6A00, #FF8C42)
+              .marquee-box h1 {
+                font-size: 1rem;
               }
-
-              #card-2 {
-                background: linear-gradient(to bottom, rgba(54, 209, 220, 1), rgba(91, 134, 229, 0.06));
-               
-              }
-
-              #card-3 {
-                background: linear-gradient(to bottom, #38EF7D, #11998E);
-              }
-
 
               #civic {
-                font-size: 2rem;
+                font-size: 1.2rem;
                 font-weight: 700;
               }
-
-              @media (max-width: 768px) {
-                main {
-                  height: 40vh;
-                  text-align: center;
-                }
-
-                .card-box {
-                  height: auto;
-                  padding: 15px;
-                }
-
-                .card-box img {
-                  height: 70px;
-                  width: 70px;
-                }
-              }
-
-              @media (max-width: 576px) {
-                main {
-                  height: auto;
-                }
-
-                .marquee-box h1 {
-                  font-size: 1rem;
-                }
-
-                #civic {
-                  font-size: 1.2rem;
-                  font-weight: 700;
-                }
-              }
-            </style>
-          </head>
-
-          <body>
-            <!-- Slider
-  <main>
-    <img class="slide_image" src="sliderImg_1.jpg" alt="Slider image" />
-    <img class="slide_image" src="sliderImg_2.jpg" alt="Slider image" />
-    <img class="slide_image" src="m3.jpg" alt="Slider image" />
-    <img class="slide_image" src="free-nature-images.jpg" alt="Slider image" />
-    <img class="slide_image" src="m1.jpg" alt="Slider image" />
-  </main> -->
-
-            <!-- Marquee -->
-            <h1 style="font-weight: 500;">
-              “Welcome to Jharkhand Civic <b>साथी</b> - Your Grievance Redressal Portal”
-            </h1>
+            }
+          </style>
 
 
-            <!-- Card Section -->
-            <div class="main-container container-fluid">
-              <div class="card-container">
-                <img src="logo-civic.jpeg" alt="logo" class="img-fluid rounded-circle" style="max-height:250px;">
-                <h1 id="civic">"Civic Saathi - Together for Change"</h1>
-                <p style="font-weight: 400;">
-                  Civic Saathi is your trusted companion for reporting and resolving everyday civic issues.
-                  From <b>Potholes, Streetlights to Sanitation and Public Services</b>, our platform makes it simple
-                  for citizens to raise <b>complaints</b>, <b>track</b> their status, and see real progress.<br><br>
-                  Civic Saathi bridges the gap between citizens and local authorities.
-                  Submit complaints, track their status, and stay informed about resolutions in your area.
-                </p>
+
+          <section class="hero">
+            <div class="slider-container position-relative">
+              <div class="slide active">
+                <img src="/slider3.png" class="d-block w-100" alt="Jharkhand Landscape">
+                <div class="caption">Welcome to Government of Jharkhand</div>
               </div>
-
-              <div class="card-container">
-                <div class="card-box" id="card-1">
-                  <img src="complain.png" alt="complaint" height="90px" width="85px">
-                  <a href="/complaints/new">
-                    <h3>Submit Complaint</h3>
-                  </a>
-                </div>
-                <div class="card-box" id="card-2">
-                  <img src="status.png" alt="status" height="90px" width="85px">
-                  <a href="/dashboard">
-                    <h3>Check Status</h3>
-                  </a>
-                </div>
-                <div class="card-box" id="card-3">
-                  <img src="nearby.png" alt="nearby" height="90px" width="85px">
-                  <a href="#">
-                    <h3>Nearby Complaints</h3>
-                  </a>
-                </div>
+              <div class="slide active">
+                <img src="/slider-images-0.jpg" class="d-block w-100" alt="Jharkhand Landscape">
+                <div class="caption">Report Issues, Improve Communities</div>
               </div>
+              <div class="slide">
+                <img src="/slider-images-1.jpg" class="d-block w-100" alt="Civic Participation">
+                <div class="caption">Analysing Grievances</div>
+              </div>
+              
+
+
+              <!-- Prev/Next -->
+              <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+              <button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
 
-            <!-- Javascript for slider -->
-            <script>
-              const slides = document.querySelectorAll(".slide_image");
-              let counter = 0;
+            <!-- Dots -->
+            <div class="dots-container text-center mt-2">
+              <span class="dot active" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+          </section>
 
-              slides.forEach((slide, index) => {
-                slide.style.left = `${index * 100}%`;
-              });
 
-              function slideImage() {
-                slides.forEach((slide) => {
-                  slide.style.transform = `translateX(-${counter * 100}%)`;
-                });
-              }
+          <!-- Marquee -->
+          <h1 style="font-weight: 500;">
+            “Welcome to Jharkhand Civic <b>साथी</b> - Your Grievance Redressal Portal”
+          </h1>
 
-              function gonext() {
-                counter++;
-                if (counter >= slides.length) {
-                  counter = 0;
-                }
-                slideImage();
-              }
 
-              setInterval(gonext, 3000);
-            </script>
-          </body>
+          <!-- Card Section -->
+          <div class="main-container container-fluid">
+            <div class="card-container">
+              <img src="logo-n.png" alt="logo" class="img-fluid rounded-circle" style="max-height:250px;">
+              <h1 id="civic">"Civic Saathi - Together for Change"</h1>
+              <p style="font-weight: 400;">
+                Civic Saathi is your trusted companion for reporting and resolving everyday civic issues.
+                From <b>Potholes, Streetlights to Sanitation and Public Services</b>, our platform makes it simple
+                for citizens to raise <b>complaints</b>, <b>track</b> their status, and see real progress.<br><br>
+                Civic Saathi bridges the gap between citizens and local authorities.
+                Submit complaints, track their status, and stay informed about resolutions in your area.
+              </p>
+            </div>
 
-          </html>
+            <div class="card-container">
+              <div class="card-box" id="card-1">
+                <img src="complain.png" alt="complaint" height="90px" width="85px">
+                <a href="/complaints/new">
+                  <h3>Submit Complaint</h3>
+                </a>
+              </div>
+              <div class="card-box" id="card-2">
+                <img src="status.png" alt="status" height="90px" width="85px">
+                <a href="/dashboard">
+                  <h3>Check Status</h3>
+                </a>
+              </div>
+              <div class="card-box" id="card-3">
+                <img src="nearby.png" alt="nearby" height="90px" width="85px">
+                <a href="#">
+                  <h3>Nearby Complaints</h3>
+                </a>
+              </div>
+            </div>
+            <img src="img.png" alt="img" height="500px">
+            <!-- main-section-gov-card -->
+            <div class="gov-container">
+              <div class="card-parent">
+                <img src="gov.png" alt="Government" height="250px" width="150px">
+                <h3>Shri Santosh Kumar </h3>
+                <p>Governor</p>
+              </div>
+              <div class="card-parent">
+                <img src="cm.png" alt="cm-photo" height="250px" width="150px">
+                <h3>Shri Hemant Soren</h3>
+                <p>Chief Minister</p>
+              </div>
+              <div class="card-parent">
+                <img src="minister.png" alt="minister-photo" height="250px" width="150px">
+                <h3>Shri Sudivya Kumar</h3>
+                <p>Minister (UD & HD)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider JS -->
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index){
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      dots[i].classList.remove('active');
+    });
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+
+  function changeSlide(n){
+    slideIndex += n;
+    if(slideIndex >= slides.length) slideIndex = 0;
+    if(slideIndex < 0) slideIndex = slides.length -1;
+    showSlide(slideIndex);
+  }
+
+  function currentSlide(n){
+    slideIndex = n-1;
+    showSlide(slideIndex);
+  }
+
+  // Auto Slide every 5 seconds
+  setInterval(()=>{ changeSlide(1); },5000);
+
+  // Initial display
+  showSlide(slideIndex);
+</script>

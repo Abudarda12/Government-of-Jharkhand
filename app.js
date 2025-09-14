@@ -37,6 +37,7 @@ app.use(session({
   secret: "sihsecret",
   resave: false,
   saveUninitialized: false
+  
 }));
 
 // Passport middleware

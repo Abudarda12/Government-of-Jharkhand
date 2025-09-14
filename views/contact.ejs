@@ -1,0 +1,100 @@
+<% layout('layouts/boilerplate') %>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1600x600/?city,government') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .contact-card {
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      color: #0d6efd;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #0d6efd;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #0a58ca;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="display-4 fw-bold">Get in Touch With Us</h1>
+    <p class="lead">We’re here to listen to your queries, feedback, and suggestions.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <div class="container my-5">
+    <div class="row g-4">
+
+      <!-- Contact Form -->
+      <div class="col-lg-7">
+        <div class="card contact-card p-4">
+          <h3 class="fw-bold mb-3">Send Us a Message</h3>
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number (Optional)</label>
+              <input type="text" class="form-control" placeholder="+91-XXXXXXXXXX">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" placeholder="Message subject">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="4" placeholder="Type your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-5">
+        <div class="card contact-card p-4">
+          <h3 class="fw-bold mb-3">Contact Information</h3>
+          <p><i class="bi bi-geo-alt contact-icon"></i> Civic Sathi, Ranchi, Jharkhand, India</p>
+          <p><i class="bi bi-telephone contact-icon"></i> +91-XXXXXXXXXX</p>
+          <p><i class="bi bi-envelope contact-icon"></i> support@civicsathi.in</p>
+          <p><i class="bi bi-clock contact-icon"></i> Mon – Fri, 10:00 AM – 6:00 PM</p>
+
+          <h5 class="fw-bold mt-4">Department Contacts</h5>
+          <ul class="list-unstyled">
+            <li> Technical Support – tech@civicsathi.in</li>
+            <li> Grievance Cell – grievance@civicsathi.in</li>
+            <li>Partnerships – partner@civicsathi.in</li>
+          </ul>
+
+          <h5 class="fw-bold mt-4">Follow Us</h5>
+          <div class="social-icons">
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 

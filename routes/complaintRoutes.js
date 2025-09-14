@@ -51,7 +51,7 @@ router.post("/", ensureAuthenticated, upload.single("image"), async (req, res) =
     await complaintEmail(
       req.user.email,
       "📢 Complaint Submitted Successfully",
-      `Hello ${req.user.name},\n\nYour complaint titled "${title}" has been successfully submitted. We will review it and get back to you shortly.\n complaint id: ${newComplaint._id} \n\nRegards,\n Civic साथी Team`
+      `Hello ${req.user.name},\n\nYour complaint titled "${title}" has been successfully submitted. We will review it and get back to you shortly.\n complaint id: ${newComplaint._id} \n Access your Dashboard: localhost:3000/dashboard \nRegards,\n Civic साथी Team`
     );
 
     req.flash("success", "Complaint submitted successfully!");
